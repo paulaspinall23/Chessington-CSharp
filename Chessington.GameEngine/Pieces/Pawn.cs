@@ -15,6 +15,7 @@ public class Pawn : Piece
     {
         var currentSquare = board.FindPiece(this);
         var result = new List<Square>();
+
         if (Player == Player.White)
         {
             if (currentSquare == Square.At(7, 5))
