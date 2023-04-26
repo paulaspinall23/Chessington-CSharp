@@ -1,4 +1,4 @@
-# Exercise Name
+# Chessington
 
 1. Fork this repo: click `Fork` in the top-right of the page - this will create a copy of this repo in **your own GitHub account**
 
@@ -17,3 +17,6 @@ Your trainer can show you how to do this, if you need any help.
 
 5. Change directory to "Chessington.UI", and run this command to run your code:  
 `dotnet run`
+
+6. Run this command to test your code:
+`dotnet test`
