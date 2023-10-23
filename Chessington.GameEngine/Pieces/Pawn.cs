@@ -17,11 +17,25 @@ public class Pawn : Piece
         var result = new List<Square>();
         if (Player == Player.White)
         {
-            result.Add (Square.At(currentSquare.Row - 1, 0));
+            if (currentSquare == Square.At(7, 5))
+            {
+                result.Add (Square.At(currentSquare.Row - 2, currentSquare.Col));
+            }
+            else
+            {
+                result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
+            }
         }
         else
         {
-            result.Add (Square.At(currentSquare.Row + 1, 0));
+            if (currentSquare == Square.At(1, 3))
+            {
+                result.Add (Square.At(currentSquare.Row + 2, currentSquare.Col));
+            }
+            else
+            {
+                result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
+            }
         }
         return result;
     }
