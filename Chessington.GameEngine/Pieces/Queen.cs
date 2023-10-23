@@ -12,6 +12,22 @@ public class Queen : Piece
 
     public override IEnumerable<Square> GetAvailableMoves(Board board)
     {
-        return Enumerable.Empty<Square>();
+        var currentSquare = board.FindPiece(this);
+        var result = new List<Square>();
+        for (var i = 0; i < 8; i++)
+            result.Add(Square.At(i, i));
+
+        for (var i = 1; i < 8; i++)
+            result.Add(Square.At(i, 8 - i));
+
+        for (var i = 0; i < 8; i++)
+            result.Add(Square.At(currentSquare.Row, i));
+
+        for (var i = 0; i < 8; i++)
+            result.Add(Square.At(i, currentSquare.Col));
+
+        result.RemoveAll(s => s == Square.At(currentSquare.Row, currentSquare.Col));
+
+        return result;
     }
 }
