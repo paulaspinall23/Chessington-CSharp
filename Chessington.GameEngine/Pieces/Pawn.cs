@@ -15,29 +15,36 @@ public class Pawn : Piece
     {
         var currentSquare = board.FindPiece(this);
         var result = new List<Square>();
-
+        
         if (Player == Player.White)
         {
-            if (currentSquare.Row == 6)
+            if (board.GetPiece(Square.At(currentSquare.Row - 1, currentSquare.Col)) == null)
             {
-                result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
-                result.Add (Square.At(currentSquare.Row - 2, currentSquare.Col));
+                if (currentSquare.Row == 6 && board.GetPiece(Square.At(currentSquare.Row - 2, currentSquare.Col)) == null)
+                {
+                    result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
+                    result.Add (Square.At(currentSquare.Row - 2, currentSquare.Col));
+                }
+                else
+                {
+                    result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
+                }
             }
-            else
-            {
-                result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
-            }
+            
         }
         else
         {
-            if (currentSquare.Row == 1)
+            if (board.GetPiece(Square.At(currentSquare.Row + 1, currentSquare.Col)) == null)
             {
-                result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
-                result.Add (Square.At(currentSquare.Row + 2, currentSquare.Col));
-            }
-            else
-            {
-                result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
+                if (currentSquare.Row == 1 && board.GetPiece(Square.At(currentSquare.Row + 2, currentSquare.Col)) == null)
+                {
+                    result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
+                    result.Add (Square.At(currentSquare.Row + 2, currentSquare.Col));
+                }
+                else
+                {
+                    result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
+                }
             }
         }
         return result;
