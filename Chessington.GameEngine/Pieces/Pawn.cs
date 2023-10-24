@@ -13,6 +13,11 @@ public class Pawn : Piece
 
     public override IEnumerable<Square> GetAvailableMoves(Board board)
     {
+        var directions = new List<Square>()
+        {
+            Square.At(1, 1),
+            Square.At(1, -1), 
+        };
         var currentSquare = board.FindPiece(this);
         var result = new List<Square>();
         
@@ -30,6 +35,20 @@ public class Pawn : Piece
                     result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
                 }
             }
+            foreach (var direction in directions)
+            {
+                var square = Square.At(currentSquare.Row - direction.Row, currentSquare.Col - direction.Col);
+                if (square.Row < 0 || square.Row > 7 || square.Col < 0 || square.Col > 7)
+                {
+                    break;
+                }
+                var pieceOnSquare = board.GetPiece(square);
+                
+                if (pieceOnSquare != null && pieceOnSquare.Player != this.Player)
+                {
+                    result.Add(square);
+                }
+            } 
         }
         else if (Player == Player.Black && currentSquare.Row < 7)
         {
@@ -43,6 +62,20 @@ public class Pawn : Piece
                 else
                 {
                     result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
+                }
+            }
+            foreach (var direction in directions)
+            {
+                var square = Square.At(currentSquare.Row + direction.Row, currentSquare.Col + direction.Col);
+                if (square.Row < 0 || square.Row > 7 || square.Col < 0 || square.Col > 7)
+                {
+                    break;
+                }
+                var pieceOnSquare = board.GetPiece(square);
+                
+                if (pieceOnSquare != null && pieceOnSquare.Player != this.Player)
+                {
+                    result.Add(square);
                 }
             }
         }
