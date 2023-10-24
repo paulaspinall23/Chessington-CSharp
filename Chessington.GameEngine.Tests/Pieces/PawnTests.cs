@@ -25,7 +25,7 @@ public class PawnTests
     {
         var board = new Board();
         var pawn = new Pawn(Player.Black);
-        board.AddPiece(Square.At(1, 0), pawn);
+        board.AddPiece(Square.At(1, 0), pawn); //should this be row 1 as thats the start?
 
         var moves = pawn.GetAvailableMoves(board);
 
@@ -37,15 +37,15 @@ public class PawnTests
     {
         var board = new Board();
         var pawn = new Pawn(Player.White);
-        board.AddPiece(Square.At(7, 5), pawn);
+        board.AddPiece(Square.At(6, 5), pawn);
 
         var moves = pawn.GetAvailableMoves(board);
 
-        moves.Should().Contain(Square.At(5, 5));
+        moves.Should().Contain(Square.At(4, 5));
     }
 
     [Test]
-    public void BlackPawns_WhichHaveNeverMoved_CanMoveTwoSquareUp()
+    public void BlackPawns_WhichHaveNeverMoved_CanMoveTwoSquareUp() //shouldnt it be down instead of up?
     {
         var board = new Board();
         var pawn = new Pawn(Player.Black);
@@ -61,13 +61,13 @@ public class PawnTests
     {
         var board = new Board();
         var pawn = new Pawn(Player.White);
-        board.AddPiece(Square.At(7, 2), pawn);
+        board.AddPiece(Square.At(6, 2), pawn);
 
-        pawn.MoveTo(board, Square.At(6, 2));
+        pawn.MoveTo(board, Square.At(5, 2));
         var moves = pawn.GetAvailableMoves(board).ToList();
 
         moves.Should().HaveCount(1);
-        moves.Should().Contain(square => square.Equals(Square.At(5, 2)));
+        moves.Should().Contain(square => square.Equals(Square.At(4, 2)));
     }
 
     [Test]

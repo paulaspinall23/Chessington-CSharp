@@ -29,6 +29,6 @@ public class KingTests
             Square.At(5, 5)
         };
 
-        moves.ShouldAllBeEquivalentTo(expectedMoves);
+        moves.Should().BeEquivalentTo(expectedMoves);
     }
 }

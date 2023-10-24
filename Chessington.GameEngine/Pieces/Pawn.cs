@@ -18,8 +18,9 @@ public class Pawn : Piece
 
         if (Player == Player.White)
         {
-            if (currentSquare == Square.At(7, 5))
+            if (currentSquare.Row == 6)
             {
+                result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
                 result.Add (Square.At(currentSquare.Row - 2, currentSquare.Col));
             }
             else
@@ -29,8 +30,9 @@ public class Pawn : Piece
         }
         else
         {
-            if (currentSquare == Square.At(1, 3))
+            if (currentSquare.Row == 1)
             {
+                result.Add (Square.At(currentSquare.Row + 1, currentSquare.Col));
                 result.Add (Square.At(currentSquare.Row + 2, currentSquare.Col));
             }
             else
