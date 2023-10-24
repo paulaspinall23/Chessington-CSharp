@@ -25,7 +25,7 @@ public class PawnTests
     {
         var board = new Board();
         var pawn = new Pawn(Player.Black);
-        board.AddPiece(Square.At(1, 0), pawn); //should this be row 1 as thats the start?
+        board.AddPiece(Square.At(1, 0), pawn); 
 
         var moves = pawn.GetAvailableMoves(board);
 
@@ -45,7 +45,7 @@ public class PawnTests
     }
 
     [Test]
-    public void BlackPawns_WhichHaveNeverMoved_CanMoveTwoSquareUp() //shouldnt it be down instead of up?
+    public void BlackPawns_WhichHaveNeverMoved_CanMoveTwoSquareUp() 
     {
         var board = new Board();
         var pawn = new Pawn(Player.Black);
