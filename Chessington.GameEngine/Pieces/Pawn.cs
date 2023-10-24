@@ -16,7 +16,7 @@ public class Pawn : Piece
         var currentSquare = board.FindPiece(this);
         var result = new List<Square>();
         
-        if (Player == Player.White)
+        if (Player == Player.White && currentSquare.Row > 0)
         {
             if (board.GetPiece(Square.At(currentSquare.Row - 1, currentSquare.Col)) == null)
             {
@@ -30,9 +30,8 @@ public class Pawn : Piece
                     result.Add (Square.At(currentSquare.Row - 1, currentSquare.Col));
                 }
             }
-            
         }
-        else
+        else if (Player == Player.Black && currentSquare.Row < 7)
         {
             if (board.GetPiece(Square.At(currentSquare.Row + 1, currentSquare.Col)) == null)
             {
